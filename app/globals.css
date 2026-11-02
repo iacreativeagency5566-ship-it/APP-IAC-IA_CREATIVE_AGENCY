@@ -1,0 +1,32 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { background: #0A0E14; color: #E6EDF3; font-family: var(--font-body), sans-serif; }
+a { color: #00E5A0; text-decoration: none; }
+a:hover { color: #E6EDF3; }
+.ph { background: repeating-linear-gradient(135deg,#111827 0 12px,#0f1623 12px 24px); color:#8B949E; font-family: ui-monospace, monospace; font-size: 12px; display:grid; place-items:center; }
+.metal { background: linear-gradient(115deg,#9aa4ad,#eef2f5 25%,#7b8691 45%,#f4f7f9 62%,#9aa4ad); background-size: 250% 100%; color:#0A0E14; box-shadow: 0 0 0 1px rgba(0,229,160,.45); transition: background-position .6s, box-shadow .3s; }
+.metal:hover { background-position: 100% 0; color:#0A0E14; box-shadow: 0 0 0 1px #00E5A0, 0 0 18px rgba(0,229,160,.25); }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+/* Parallax (estructura de Osmo, colores de marca) */
+.parallax { position: relative; background: #0A0E14; }
+.parallax__header { position: relative; height: 100svh; overflow: hidden; }
+.parallax__visuals { position: absolute; inset: 0; overflow: hidden; }
+.parallax__layers { position: absolute; inset: 0; }
+.parallax__layer-img { position: absolute; left: 0; top: 0; width: 100%; height: 118%; object-fit: cover; }
+.parallax__layer-title { position: absolute; inset: 0; z-index: 3; display: flex; align-items: center; justify-content: center; }
+.parallax__title { font-family: var(--font-display), sans-serif; font-weight: 700; font-size: clamp(2.5rem, 11vw, 9rem); line-height: 1; color: #E6EDF3; text-align: center; text-wrap: balance; }
+.parallax__fade { position: absolute; inset: auto 0 0 0; height: 25%; background: linear-gradient(to bottom, transparent, #0A0E14); pointer-events: none; z-index: 4; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* Identidad "Fábrica de Sistemas": rejilla de puntos, etiquetas numeradas, riel de flujo */
+.dots { background-image: radial-gradient(rgba(139,148,158,.22) 1px, transparent 1px); background-size: 28px 28px; }
+main { counter-reset: s; }
+main > section[data-label] { counter-increment: s; }
+main > section[data-label]::before { content: "0" counter(s) " / " attr(data-label); display: block; margin-bottom: 1.25rem; font-family: var(--font-mono), monospace; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #8B949E; }
+.hud { position: relative; }
+.hud::before, .hud::after { content: ""; position: absolute; width: 18px; height: 18px; border: 1px solid #00E5A0; opacity: .7; pointer-events: none; }
+.hud::before { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.hud::after { bottom: 0; right: 0; border-left: 0; border-top: 0; }
